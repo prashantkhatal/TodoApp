@@ -1,0 +1,6 @@
+a{
+    margin-right: 10px;
+}
+a.active{
+    border: 1px solid red;
+}
