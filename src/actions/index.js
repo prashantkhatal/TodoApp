@@ -15,10 +15,10 @@ export const todoActions = {
             text
         }
     },
-    toggleTodo(index){
+    toggleTodo(id){
         return {
             type: TOGGLE_TODO,
-            index
+            id
         }
     }
 }

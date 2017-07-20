@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {TodoList} from './Todo';
-import {AddTodoPanel} from './AddTodoPanel';
+import {TodoListContainer} from '../containers/TodoListContainer';
+import {AddTodo} from '../containers/AddTodo';
 import {Footer} from './Footer';
-import {VISIBILITY_STATUSES} from '../actions';
+import * as myActions from '../actions';
 
 export class TodosApp extends React.Component {
 
@@ -15,8 +15,8 @@ export class TodosApp extends React.Component {
     render() {
         return (
             <div>
-                <AddTodoPanel />
-                <TodoList {...this.props}/>
+                <AddTodo />
+                <TodoListContainer {...this.props}/>
                 <Footer visibilityFilter={this.state.status}/>
             </div>
         );
@@ -24,5 +24,5 @@ export class TodosApp extends React.Component {
 }
 
 TodosApp.defaultProps = {
-    status:VISIBILITY_STATUSES.SHOW_ALL
+    status:myActions.VISIBILITY_STATUSES.SHOW_ALL
 }

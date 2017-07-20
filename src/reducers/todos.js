@@ -4,11 +4,16 @@ export default function todoRD(state = [], action) {
     switch (action.type) {
 
         case ADD_TODO:
-            state = {...state, ...todoActions.addTodo(action.text)}
+            state = [...state, {id: state.length + 1, text: action.text, completed:false}]
             break;
 
         case TOGGLE_TODO:
-            state = {...state, ...todoActions.toggleTodo(action.id)}
+            state = state.map(function (todo) {
+                if(todo.id == action.id){
+                    return {...todo, completed: !todo.completed}
+                }
+                return todo;
+            });
             break;
 
         default:

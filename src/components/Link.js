@@ -1,8 +1,11 @@
 import React from 'react';
 
 export const Link = (props) => {
-        console.log(props);
-        return(
-            <a href="#" className={(props.isActive) ? 'active' : '' }>{props.linkText}</a>
-        );
-    }
+    return (
+        <a
+            href="#"
+            className={(props.isActive) ? 'active' : '' }
+            onClick={(e) => e.preventDefault()}
+        >{props.linkText}</a>
+    );
+}
