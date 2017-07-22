@@ -2,6 +2,8 @@ import React from 'react';
 
 import {TodoListContainer} from '../containers/TodoListContainer';
 import {AddTodo} from '../containers/AddTodo';
+import {VisibilityContainer} from '../containers/VisibilityContainer'
+
 import {Footer} from './Footer';
 import * as myActions from '../actions';
 
@@ -16,8 +18,10 @@ export class TodosApp extends React.Component {
         return (
             <div>
                 <AddTodo />
-                <TodoListContainer {...this.props}/>
-                <Footer visibilityFilter={this.state.status}/>
+                <TodoListContainer />
+                <VisibilityContainer/>
+
+                {/*<Footer visibilityFilter={this.state.status}/>*/}
             </div>
         );
     }

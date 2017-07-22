@@ -5,7 +5,10 @@ export const Link = (props) => {
         <a
             href="#"
             className={(props.isActive) ? 'active' : '' }
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => {
+                e.preventDefault();
+                props.switchVisibility(props.status);
+            }}
         >{props.linkText}</a>
     );
 }

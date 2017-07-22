@@ -21,7 +21,7 @@ export function Footer(props) {
     return (
         <div>
             {visibilityOptions.map((option, index) => {
-                return <Link key={index} linkText={option.linkText} isActive={(props.visibilityFilter == option.status) ? true : false}/>
+                return <Link key={index} {...props} status={option.status} linkText={option.linkText} isActive={(props.visibilityFilter == option.status) ? true : false}/>
             })}
         </div>
     );
