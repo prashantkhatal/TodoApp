@@ -17,7 +17,6 @@ function listoutTodos(todos, status) {
 }
 
 const mapStatesToMap = function (state) {
-    console.log(state);
     return {
         todos: listoutTodos(state.todoRD, state.visibilityRD)
     }
