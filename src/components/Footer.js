@@ -5,22 +5,22 @@ import { VISIBILITY_STATUSES } from '../actions';
 
 const visibilityOptions = [
     {
-        linkText: 'Show All',
+        linkText: 'All',
         status: VISIBILITY_STATUSES.SHOW_ALL
     },
     {
-        linkText: 'Show Completed',
+        linkText: 'Completed',
         status: VISIBILITY_STATUSES.SHOW_COMPLETED
     },
     {
-        linkText: 'Show Active',
+        linkText: 'Active',
         status: VISIBILITY_STATUSES.SHOW_ACTIVE
     }
 ];
 
 export function Footer( props ) {
     return (
-        <div>
+        <div>Show:
             {visibilityOptions.map( ( option, index ) => {
                 return <Link key={index} {...props} status={option.status} linkText={option.linkText}
                              isActive={(props.visibilityFilter == option.status) ? true : false}/>
