@@ -1,6 +1,6 @@
-export const ADD_TODO = 'ADD_TODO',
-    TOGGLE_TODO = 'TOGGLE_TODO',
-    SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
+export const ADD_TODO              = 'ADD_TODO',
+             TOGGLE_TODO           = 'TOGGLE_TODO',
+             SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 export const VISIBILITY_STATUSES = {
     SHOW_ALL: 'SHOW_ALL',
@@ -9,13 +9,13 @@ export const VISIBILITY_STATUSES = {
 };
 
 export const todoActions = {
-    addTodo(text) {
+    addTodo( text ) {
         return {
             type: ADD_TODO,
             text
         }
     },
-    toggleTodo(id){
+    toggleTodo( id ){
         return {
             type: TOGGLE_TODO,
             id
@@ -24,7 +24,7 @@ export const todoActions = {
 }
 
 export const visibilityActions = {
-    toggleVisibility(visibility){
+    toggleVisibility( visibility ){
         return {
             type: SET_VISIBILITY_FILTER,
             visibility

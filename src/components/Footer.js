@@ -1,6 +1,7 @@
 import React from 'react';
-import {Link} from './Link';
-import {VISIBILITY_STATUSES} from '../actions';
+
+import { Link } from './Link';
+import { VISIBILITY_STATUSES } from '../actions';
 
 const visibilityOptions = [
     {
@@ -17,12 +18,13 @@ const visibilityOptions = [
     }
 ];
 
-export function Footer(props) {
+export function Footer( props ) {
     return (
         <div>
-            {visibilityOptions.map((option, index) => {
-                return <Link key={index} {...props} status={option.status} linkText={option.linkText} isActive={(props.visibilityFilter == option.status) ? true : false}/>
-            })}
+            {visibilityOptions.map( ( option, index ) => {
+                return <Link key={index} {...props} status={option.status} linkText={option.linkText}
+                             isActive={(props.visibilityFilter == option.status) ? true : false}/>
+            } )}
         </div>
     );
 }

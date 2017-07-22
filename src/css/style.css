@@ -1,15 +1,16 @@
-a{
+a {
     margin-right: 10px;
 }
-a.active{
+
+a.active {
     border: 1px solid red;
 }
 
-li.striked{
+li.striked {
     text-decoration: line-through;
     text-decoration-color: red;
 }
 
-#TodoApp{
-    width:30%;
+#TodoApp {
+    width: 30%;
 }

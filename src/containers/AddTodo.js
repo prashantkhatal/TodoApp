@@ -1,16 +1,16 @@
-import {AddTodoPanel} from '../components/AddTodoPanel';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import {todoActions} from '../actions'
+import { AddTodoPanel } from '../components/AddTodoPanel';
+import { todoActions } from '../actions'
 
 
-const mapDispatchToProps = function (dispatch) {
+const mapDispatchToProps = function( dispatch ) {
     return {
-        addTodoFunction: (text) => {
-            dispatch(todoActions.addTodo(text))
+        addTodoFunction: ( text ) => {
+            dispatch( todoActions.addTodo( text ) )
         }
     }
 }
 
 
-export const AddTodo = connect(null, mapDispatchToProps)(AddTodoPanel);
+export const AddTodo = connect( null, mapDispatchToProps )( AddTodoPanel );

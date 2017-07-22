@@ -1,17 +1,18 @@
-import {connect} from 'react-redux';
-import {Footer} from '../components/Footer';
-import {visibilityActions} from '../actions';
+import { connect } from 'react-redux';
 
-const mapStatesToProps = function (state) {
+import { Footer } from '../components/Footer';
+import { visibilityActions } from '../actions';
+
+const mapStatesToProps = function( state ) {
     return {
-        visibilityFilter: state.visibilityRD
+        visibilityFilter: state.visibility
     }
-}
+};
 
-const mapDispatchToProps = function (dispatch) {
+const mapDispatchToProps = function( dispatch ) {
     return {
-        switchVisibility: (status) => dispatch(visibilityActions.toggleVisibility(status))
+        switchVisibility: ( status ) => dispatch( visibilityActions.toggleVisibility( status ) )
     }
-}
+};
 
-export const VisibilityContainer = connect(mapStatesToProps, mapDispatchToProps)(Footer);
+export const VisibilityContainer = connect( mapStatesToProps, mapDispatchToProps )( Footer );
