@@ -28,6 +28,9 @@ const mapDispatchToProps = function( dispatch ) {
     return {
         toggleTodo: ( id ) => {
             dispatch( todoActions.toggleTodo( id ) )
+        },
+        deleteTodos: (id) => {
+            dispatch( todoActions.deleteTodos( id ) )
         }
     }
 }

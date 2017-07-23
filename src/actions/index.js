@@ -1,5 +1,6 @@
 export const ADD_TODO              = 'ADD_TODO',
              TOGGLE_TODO           = 'TOGGLE_TODO',
+             DELETE_TODOS          = 'DELETE_TODOS',
              SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 export const VISIBILITY_STATUSES = {
@@ -19,6 +20,12 @@ export const todoActions = {
         return {
             type: TOGGLE_TODO,
             id
+        }
+    },
+    deleteTodos( ids ){
+        return {
+            type: DELETE_TODOS,
+            ids
         }
     }
 }

@@ -1,10 +1,13 @@
-import { ADD_TODO, TOGGLE_TODO, todoActions } from '../actions';
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODOS } from '../actions';
+
+let idCounter = 0;
 
 export default function todoRD( state = [], action ) {
     switch( action.type ) {
 
         case ADD_TODO:
-            state = [ ...state, { id: state.length + 1, text: action.text, completed: false } ];
+            state = [ ...state, { id: idCounter++, text: action.text, completed: false } ];
+            break;
 
         case TOGGLE_TODO:
             state = state.map( function( todo ) {
@@ -13,8 +16,14 @@ export default function todoRD( state = [], action ) {
                 }
                 return todo;
             } );
+            break;
+
+        case DELETE_TODOS:
+            state = state.filter((todo) => -1 == action.ids.indexOf(todo.id) );
+            break;
 
         default:
-            return state;
+            return [...state];
     }
+    return state;
 }

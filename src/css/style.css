@@ -1,3 +1,6 @@
+.hide {
+    display: none;
+}
 a {
     margin-right: 10px;
 }
@@ -13,4 +16,55 @@ li.striked {
 
 #TodoApp {
     width: 30%;
+}
+
+.todo-list ul {
+    list-style-type: none;
+}
+
+.todo-list {
+    border: 5px solid #d800ff;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+.todo-list li {
+    border-bottom: 1px dashed black;
+    margin: 6px 10px 0 0;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.todo-list > span {
+    margin: 0 auto;
+    display: table;
+}
+
+.todo-list input[type='checkbox']{
+    float: left;
+    margin-left: -20px;
+    margin-top: 6px;
+}
+
+div.clearfix {
+    border-bottom: 2px dashed #d800ff;
+    margin: 0 13px;
+}
+
+a.delete {
+    float: right;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 2px 8px;
+    color: white;
+    background-color: #d800ff;
+    margin: 0;
+    font-weight: bold;
+}
+
+a.delete-all{
+    float: left;
+    margin-left: 13px;
+    margin-right: -40px;
+    margin-top: -5px;
 }
