@@ -12,6 +12,9 @@ export function TodoList( props ) {
             }}>Delete All</a>
 
             <span>Todo List:</span>
+            <a href="#" className="delete delete-all fetch" onClick={( e ) => {
+                props.fetchContent();
+            }}>Fetch Content</a>
             <div className="clearfix"></div>
             <ul>
                 {props.todos.map( ( todo, index ) => ( <Todo key={todo.id} {...todo} {...props}/>) )}

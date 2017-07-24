@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 export const ADD_TODO              = 'ADD_TODO',
              TOGGLE_TODO           = 'TOGGLE_TODO',
              DELETE_TODOS          = 'DELETE_TODOS',
@@ -26,6 +28,15 @@ export const todoActions = {
         return {
             type: DELETE_TODOS,
             ids
+        }
+    },
+    fetchTodos(){
+        return function() {
+            return fetch('http://localhost:7777/').then(function( response ) {
+                console.log("Yess In Res=>", response);
+            }, function(error) {
+                console.log("Yess In Res=>", error);
+            });
         }
     }
 }

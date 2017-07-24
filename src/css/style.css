@@ -68,3 +68,9 @@ a.delete-all{
     margin-right: -40px;
     margin-top: -5px;
 }
+
+a.fetch{
+    float:right;
+    margin-right: 10px;
+    margin-top: -23px;
+}
