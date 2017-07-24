@@ -14,7 +14,7 @@ export function TodoList( props ) {
             <span>Todo List:</span>
             <div className="clearfix"></div>
             <ul>
-                {props.todos.map( ( todo, index ) => ( <Todo key={index} {...todo} {...props}/>) )}
+                {props.todos.map( ( todo, index ) => ( <Todo key={todo.id} {...todo} {...props}/>) )}
             </ul>
         </div>
     )
