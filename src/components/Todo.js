@@ -3,7 +3,7 @@ import React from 'react';
 export function TodoList( props ) {
     return (
         <div className="todo-list">
-            <a href="#" className={((props.todos.length) ? 'delete delete-all' : 'hide delete delete-all')} onClick={( e ) => {
+            <a href="#" className={`delete delete-all ${( (!props.todos.length) ? 'hide' : '')}`} onClick={( e ) => {
                 let ids = [];
                 document.querySelectorAll('input[type=checkbox]:checked').forEach(function(e,d){
                     ids.push(+e.getAttribute('data-id'))
