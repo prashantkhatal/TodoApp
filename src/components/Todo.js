@@ -6,9 +6,9 @@ export function TodoList( props ) {
             <a href="#" className={((props.todos.length) ? 'delete delete-all' : 'hide delete delete-all')} onClick={( e ) => {
                 let ids = [];
                 document.querySelectorAll('input[type=checkbox]:checked').forEach(function(e,d){
-                    ids.push(e.getAttribute('data-id'))
-                })
-                props.deleteTodos(ids);
+                    ids.push(+e.getAttribute('data-id'))
+                });
+                ids.length && props.deleteTodos(ids);
             }}>Delete All</a>
 
             <span>Todo List:</span>
