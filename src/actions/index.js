@@ -3,6 +3,7 @@ import fetch from 'isomorphic-fetch';
 export const ADD_TODO              = 'ADD_TODO',
              TOGGLE_TODO           = 'TOGGLE_TODO',
              DELETE_TODOS          = 'DELETE_TODOS',
+             IMPORT_TODOS          = 'IMPORT_TODOS',
              SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 export const VISIBILITY_STATUSES = {
@@ -30,13 +31,18 @@ export const todoActions = {
             ids
         }
     },
-    fetchTodos(){
-        return function() {
-            return fetch('http://localhost:7777/').then(function( response ) {
-                console.log("Yess In Res=>", response);
-            }, function(error) {
-                console.log("Yess In Res=>", error);
-            });
+    fetchTodos(url){
+
+        return function(dispatch) {
+
+            return fetch(url)
+                .then(response => response.json())
+                .then( json => {
+                    dispatch({
+                        type: IMPORT_TODOS,
+                        todos: json
+                    });
+                } );
         }
     }
 }

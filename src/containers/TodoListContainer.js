@@ -32,9 +32,8 @@ const mapDispatchToProps = function( dispatch ) {
         deleteTodos: (id) => {
             dispatch( todoActions.deleteTodos( id ) )
         },
-        fetchContent: () => {
-            console.log("I am here in Container");
-            dispatch(todoActions.fetchTodos());
+        fetchContent: (url) => {
+            dispatch(todoActions.fetchTodos(url));
         }
     }
 }

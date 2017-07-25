@@ -1,26 +1,40 @@
 import React from 'react';
 
-export function TodoList( props ) {
-    return (
-        <div className="todo-list">
-            <a href="#" className={`delete delete-all ${( (!props.todos.length) ? 'hide' : '')}`} onClick={( e ) => {
-                let ids = [];
-                document.querySelectorAll('input[type=checkbox]:checked').forEach(function(e,d){
-                    ids.push(+e.getAttribute('data-id'))
-                });
-                ids.length && props.deleteTodos(ids);
-            }}>Delete All</a>
+export class TodoList extends React.Component{
 
-            <span>Todo List:</span>
-            <a href="#" className="delete delete-all fetch" onClick={( e ) => {
-                props.fetchContent();
-            }}>Fetch Content</a>
-            <div className="clearfix"></div>
-            <ul>
-                {props.todos.map( ( todo, index ) => ( <Todo key={todo.id} {...todo} {...props}/>) )}
-            </ul>
-        </div>
-    )
+
+    constructor(props){
+        super(props);
+    }
+
+    componentDidMount(){
+        this.props.fetchContent(this.props.apiUrl);
+    }
+
+    render() {
+        return (
+            <div className="todo-list">
+                <a href="#" className={`delete delete-all ${( (!this.props.todos.length) ? 'hide' : '')}`}
+                   onClick={( e ) => {
+                       let ids = [];
+                       document.querySelectorAll( 'input[type=checkbox]:checked' ).forEach( function( e, d ) {
+                           ids.push( +e.getAttribute( 'data-id' ) )
+                       } );
+                       ids.length && this.props.deleteTodos( ids );
+                   }}>Delete All</a>
+
+                <span>Todo List:</span>
+                <a href="#" className="delete delete-all fetch hide" onClick={( e ) => {
+                    this.props.fetchContent();
+                }}>Fetch Content</a>
+                <div className="clearfix"></div>
+                <ul>
+                    {this.props.todos.map( ( todo, index ) => (<Todo key={todo.id} {...todo} toggleTodo={this.props.toggleTodo}
+                                                                deleteTodos={this.props.deleteTodos}/>) )}
+                </ul>
+            </div>
+        )
+    }
 }
 
 function Todo( props ) {
