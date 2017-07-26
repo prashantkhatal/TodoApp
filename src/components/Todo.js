@@ -12,6 +12,14 @@ export class TodoList extends React.Component{
     }
 
     render() {
+
+        let todoListPanel = <li style={{textAlign: 'center'}}>No Goals</li>;
+
+        if( this.props.todos.length) {
+            todoListPanel = this.props.todos.map( ( todo, index ) => (<Todo key={todo.id} {...todo} toggleTodo={this.props.toggleTodo}
+                                                            deleteTodos={this.props.deleteTodos}/>) )
+        }
+
         return (
             <div className="todo-list">
                 <a href="#" className={`delete delete-all button ${( (!this.props.todos.length) ? 'hide' : '')}`}
@@ -27,11 +35,10 @@ export class TodoList extends React.Component{
                 <a href="#" className="delete delete-all fetch hide button" onClick={( e ) => {
                     this.props.fetchContent();
                 }}>Fetch Content</a>
+
                 <div className="clearfix"></div>
-                <ul>
-                    {this.props.todos.map( ( todo, index ) => (<Todo key={todo.id} {...todo} toggleTodo={this.props.toggleTodo}
-                                                                deleteTodos={this.props.deleteTodos}/>) )}
-                </ul>
+
+                <ul>{todoListPanel}</ul>
             </div>
         )
     }

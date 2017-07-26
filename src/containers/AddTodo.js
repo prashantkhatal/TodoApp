@@ -8,6 +8,9 @@ const mapDispatchToProps = function( dispatch ) {
     return {
         addTodoFunction: ( text ) => {
             dispatch( todoActions.addTodo( text ) )
+        },
+        searchTodo: (searchText) =>{
+            dispatch(todoActions.searchTodo(searchText))
         }
     }
 }

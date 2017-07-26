@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, DELETE_TODOS, IMPORT_TODOS } from '../actions';
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODOS, IMPORT_TODOS, SEARCH_TODO} from '../actions';
 
 let idCounter = 0;
 
@@ -26,6 +26,8 @@ export default function todoRD( state = [], action ) {
             state = [ ...state, ...action.todos.map( todo => {
                 return { ...todo, id: idCounter++ }
             } ) ];
+            break;
+
         default:
             return [...state];
     }

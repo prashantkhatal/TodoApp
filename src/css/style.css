@@ -18,16 +18,24 @@ li.striked {
     width: 60%
 }
 
-#TodoApp .goal{
+input[type="text"] {
     border: 2px solid violet;
     padding: 6px 1px;
     font-size: 18px;
     width: 40%;
     text-indent: 25px;
-    background: url(../images/form_sprite.png) no-repeat;
-    background-position: 0px -109px;
     font-style: italic;
     font-family: serif;
+}
+
+#TodoApp .goal {
+    background: url(../images/form_sprite.png) no-repeat;
+    background-position: 0px -109px;
+}
+
+#TodoApp .search {
+    background: url(../images/form_sprite.png) no-repeat;
+    background-position: 0px -25px;
 }
 
 .todo-list ul {
@@ -73,7 +81,7 @@ a.button{
     padding: 2px 8px;
     color: white;
     background-color: #d800ff;
-    margin: 0;
+    margin: 0 10px;
     font-weight: bold;
 }
 
@@ -88,4 +96,8 @@ a.fetch{
     float:right;
     margin-right: 10px;
     margin-top: -23px;
+}
+
+a.add_todo_btn{
+    padding: 10px 20px;
 }

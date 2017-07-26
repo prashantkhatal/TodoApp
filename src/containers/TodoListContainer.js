@@ -4,23 +4,24 @@ import { VISIBILITY_STATUSES } from '../actions';
 
 import { todoActions } from '../actions'
 
-function listOutTodos( todos, status ) {
+function listOutTodos( todos, status, searchText = '' ) {
+    let statusFlag = true;
+    searchText = searchText.toLowerCase();
+
     switch( status ) {
-        case VISIBILITY_STATUSES.SHOW_COMPLETED:
-            return todos.filter( ( todo ) => todo.completed == true );
-
         case VISIBILITY_STATUSES.SHOW_ACTIVE:
-            return todos.filter( ( todo ) => todo.completed != true );
-
+            statusFlag = false;
+            break;
+        case VISIBILITY_STATUSES.SHOW_COMPLETED:
         case VISIBILITY_STATUSES.SHOW_ALL:
-        default:
-            return todos;
     }
+
+    return todos.filter( ( todo ) => ( VISIBILITY_STATUSES.SHOW_ALL == status || todo.completed == statusFlag ) && -1 != todo.text.toLowerCase().indexOf(searchText) );
 }
 
 const mapStatesToMap = function( state ) {
     return {
-        todos: listOutTodos( state.todos, state.visibility )
+        todos: listOutTodos( state.todos, state.visibility, state.searchText )
     }
 }
 
@@ -37,6 +38,5 @@ const mapDispatchToProps = function( dispatch ) {
         }
     }
 }
-
 
 export const TodoListContainer = connect( mapStatesToMap, mapDispatchToProps )( TodoList );

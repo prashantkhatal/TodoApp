@@ -4,6 +4,7 @@ export const ADD_TODO              = 'ADD_TODO',
              TOGGLE_TODO           = 'TOGGLE_TODO',
              DELETE_TODOS          = 'DELETE_TODOS',
              IMPORT_TODOS          = 'IMPORT_TODOS',
+             SEARCH_TODO           = 'SEARCH_TODO',
              SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 export const VISIBILITY_STATUSES = {
@@ -43,6 +44,12 @@ export const todoActions = {
                         todos: json
                     });
                 } );
+        }
+    },
+    searchTodo(searchText){
+        return {
+            type: SEARCH_TODO,
+            searchText
         }
     }
 }
