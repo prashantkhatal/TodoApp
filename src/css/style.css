@@ -15,7 +15,19 @@ li.striked {
 }
 
 #TodoApp {
-    width: 30%;
+    width: 60%
+}
+
+#TodoApp .goal{
+    border: 2px solid violet;
+    padding: 6px 1px;
+    font-size: 18px;
+    width: 40%;
+    text-indent: 25px;
+    background: url(../images/form_sprite.png) no-repeat;
+    background-position: 0px -109px;
+    font-style: italic;
+    font-family: serif;
 }
 
 .todo-list ul {
@@ -53,6 +65,9 @@ div.clearfix {
 
 a.delete {
     float: right;
+}
+
+a.button{
     text-decoration: none;
     font-size: 14px;
     padding: 2px 8px;

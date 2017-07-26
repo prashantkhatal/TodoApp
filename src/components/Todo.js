@@ -14,7 +14,7 @@ export class TodoList extends React.Component{
     render() {
         return (
             <div className="todo-list">
-                <a href="#" className={`delete delete-all ${( (!this.props.todos.length) ? 'hide' : '')}`}
+                <a href="#" className={`delete delete-all button ${( (!this.props.todos.length) ? 'hide' : '')}`}
                    onClick={( e ) => {
                        let ids = [];
                        document.querySelectorAll( 'input[type=checkbox]:checked' ).forEach( function( e, d ) {
@@ -24,7 +24,7 @@ export class TodoList extends React.Component{
                    }}>Delete All</a>
 
                 <span>Todo List:</span>
-                <a href="#" className="delete delete-all fetch hide" onClick={( e ) => {
+                <a href="#" className="delete delete-all fetch hide button" onClick={( e ) => {
                     this.props.fetchContent();
                 }}>Fetch Content</a>
                 <div className="clearfix"></div>
@@ -42,7 +42,7 @@ function Todo( props ) {
         <li className={(props.completed) ? 'striked' : ''} onClick={e => props.toggleTodo( props.id )}>
             <input type="checkbox" data-id={props.id} onClick={(e)=> e.stopPropagation()}/>
             {props.text}
-            <a href="#" className="delete" onClick={( e ) => {
+            <a href="#" className="delete button" onClick={( e ) => {
                 e.stopPropagation();
                 props.deleteTodos([props.id]);
             }}>Delete</a>
