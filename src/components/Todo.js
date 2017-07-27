@@ -1,4 +1,5 @@
 import React from 'react';
+import DragSortableList from 'react-drag-sortable';
 
 export class TodoList extends React.Component{
 
@@ -13,11 +14,15 @@ export class TodoList extends React.Component{
 
     render() {
 
-        let todoListPanel = <li style={{textAlign: 'center'}}>No Goals</li>;
+        let list = [{'content':<li className='no-drag' style={{textAlign: 'center'}}>No Goals</li>}],
+            placeholder = <li className="placeholderContent"> DROP HERE ! </li>;
 
         if( this.props.todos.length) {
-            todoListPanel = this.props.todos.map( ( todo, index ) => (<Todo key={todo.id} {...todo} toggleTodo={this.props.toggleTodo}
-                                                            deleteTodos={this.props.deleteTodos}/>) )
+	        list = [];
+	        this.props.todos.map( ( todo, index ) => {
+		        list.push( { 'content':<Todo key={todo.id} {...todo} toggleTodo={this.props.toggleTodo}
+                       deleteTodos={this.props.deleteTodos} />});
+	        } )
         }
 
         return (
@@ -38,7 +43,7 @@ export class TodoList extends React.Component{
 
                 <div className="clearfix"></div>
 
-                <ul>{todoListPanel}</ul>
+                <ul><DragSortableList items={list} placeholder={placeholder}/></ul>
             </div>
         )
     }
@@ -47,6 +52,7 @@ export class TodoList extends React.Component{
 function Todo( props ) {
     return (
         <li className={(props.completed) ? 'striked' : ''} onClick={e => props.toggleTodo( props.id )}>
+            <i className="sort"></i>
             <input type="checkbox" data-id={props.id} onClick={(e)=> e.stopPropagation()}/>
             {props.text}
             <a href="#" className="delete button" onClick={( e ) => {
