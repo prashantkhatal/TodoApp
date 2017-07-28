@@ -6,10 +6,11 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { reducers } from '../reducers';
 
 import thunkMiddleware from 'redux-thunk';
+import {todoDecorator} from '../middlewares/todoDecorator';
 
 import { Provider } from 'react-redux';
 
-const store = createStore( reducers, compose(applyMiddleware(thunkMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() ) );
+const store = createStore( reducers, compose(applyMiddleware(thunkMiddleware, todoDecorator), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() ) );
 
 class MyApp extends React.Component {
     render() {

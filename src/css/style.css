@@ -55,6 +55,7 @@ input[type="text"] {
     width: 20px;
     display: inline-block;
     float: right;
+    cursor: move;
 }
 
 .todo-list ul {
