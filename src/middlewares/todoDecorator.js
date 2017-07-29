@@ -1,6 +1,6 @@
 import {ADD_TODO, IMPORT_TODOS} from '../actions';
 
-export const todoDecorator = state => next => action => {
+export const todoDecorator = store => next => action => {
 
     switch(action.type){
         case ADD_TODO:

@@ -2,8 +2,16 @@ import React from 'react';
 import InputElement from 'react-input-mask';
 
 
+/**
+ *
+ * 9 => [0-9]
+ * a => [a-zA-Z]
+ * * => anything
+ *
+ */
+
 export const InputMask = function( props ) {
 	return(
-		<InputElement mask="+\91 aa aea aaaa" maskChar="_" alwaysShowMask={true} formatChars={{'e':'[A-Za-z]', 'a':'[pras]'}}/>
+		<InputElement mask="+\91 aa aea aa99" maskChar="_" alwaysShowMask={true} formatChars={{'e':'[0-9]', 'a':'[0-9]', '9':'[0-9]'}}/>
 	);
 }
