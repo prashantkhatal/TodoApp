@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const Link = ( props ) => {
     return (
@@ -11,4 +12,9 @@ export const Link = ( props ) => {
             }}
         >{props.linkText}</a>
     );
+}
+
+Link.propTypes = {
+    isActive:PropTypes.bool.isRequired,
+    linkText:PropTypes.string.isRequired
 }

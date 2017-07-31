@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Link } from './Link';
 import { VISIBILITY_STATUSES } from '../actions';
@@ -27,4 +28,8 @@ export function Footer( props ) {
             } )}
         </div>
     );
+}
+
+Footer.propTypes = {
+    visibilityFilter: PropTypes.string.isRequired
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import DragSortableList from 'react-drag-sortable';
+import PropTypes from 'prop-types';
+
 
 export class TodoList extends React.Component{
 
@@ -61,4 +63,16 @@ function Todo( props ) {
             }}>Delete</a>
         </li>
     );
+}
+
+TodoList.propTypes = {
+    apiUrl: PropTypes.string.isRequired,
+    todos: PropTypes.array,
+    toggleTodo: PropTypes.func.isRequired
+}
+
+Todo.propTypes = {
+    id:PropTypes.number.isRequired,
+    text:PropTypes.string.isRequired,
+    completed:PropTypes.bool.isRequired
 }
