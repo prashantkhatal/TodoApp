@@ -19,9 +19,9 @@ function listOutTodos( todos, status, searchText = '' ) {
     return todos.filter( ( todo ) => ( VISIBILITY_STATUSES.SHOW_ALL == status || todo.completed == statusFlag ) && -1 != todo.text.toLowerCase().indexOf(searchText) );
 }
 
-const mapStatesToMap = function( state ) {
+const mapStatesToMap = function( state, myOwnProps ) {
     return {
-        todos: listOutTodos( state.todos, state.visibility, state.searchText )
+        todos: listOutTodos( state.todos, myOwnProps.params.filter || state.visibility, state.searchText )
     }
 }
 

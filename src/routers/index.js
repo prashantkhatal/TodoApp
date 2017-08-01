@@ -8,7 +8,8 @@ export class AppRouter extends React.Component {
         return (
             <Router history={browserHistory}>
                 <Route path="/" component={TodosApp}>
-                    <Route path="/home/(:id)" component={TodosApp}/>
+                    {/*<Route path="*" component={TodosApp}/>*/}
+                    <Route path="/(:filter)" component={TodosApp}/>
                 </Route>
             </Router>
         );

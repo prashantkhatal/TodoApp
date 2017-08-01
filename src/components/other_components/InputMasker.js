@@ -12,6 +12,9 @@ import InputElement from 'react-input-mask';
 
 export const InputMask = function( props ) {
 	return(
-		<InputElement mask="+\91 aa aea aa99" maskChar="_" alwaysShowMask={true} formatChars={{'e':'[0-9]', 'a':'[0-9]', '9':'[0-9]'}}/>
+		<div>
+			<label>Phone Number: </label>
+			<InputElement mask="+\91 aa aea aa99" maskChar="_" alwaysShowMask={true} formatChars={{'e':'[0-9]', 'a':'[0-9]', '9':'[0-9]'}}/>
+		</div>
 	);
 }
