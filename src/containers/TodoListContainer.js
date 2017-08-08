@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 import { TodoList } from '../components/Todo';
-import { VISIBILITY_STATUSES } from '../actions';
+import { VISIBILITY_STATUSES } from '../actions/actionConstants';
 
-import { todoActions } from '../actions'
+import { todoActions } from '../actions/ActionCreators'
 
 function listOutTodos( todos, status, searchText = '' ) {
     let statusFlag = true;
@@ -26,17 +27,25 @@ const mapStatesToMap = function( state, myOwnProps ) {
 }
 
 const mapDispatchToProps = function( dispatch ) {
+
     return {
-        toggleTodo: ( id ) => {
-            dispatch( todoActions.toggleTodo( id ) )
-        },
-        deleteTodos: (id) => {
-            dispatch( todoActions.deleteTodos( id ) )
-        },
-        fetchContent: (url) => {
-            dispatch(todoActions.fetchTodos(url));
-        }
-    }
+        ...bindActionCreators( todoActions, dispatch )
+    };
 }
 
 export const TodoListContainer = connect( mapStatesToMap, mapDispatchToProps )( TodoList );
+
+//Optional to bindActionCreators is below code
+/*
+ return {
+	 toggleTodo: ( id ) => {
+		 dispatch( todoActions.toggleTodo( id ) )
+	 },
+	 deleteTodos: (id) => {
+		 dispatch( todoActions.deleteTodos( id ) )
+	 },
+	 fetchContent: (url) => {
+	 	dispatch(todoActions.fetchTodos(url));
+	 }
+ }
+ */

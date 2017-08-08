@@ -1,19 +1,14 @@
 import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import { AddTodoPanel } from '../components/AddTodoPanel';
-import { todoActions } from '../actions'
-
+import { addTodoFunction, searchTodo } from '../actions/ActionCreators'
 
 const mapDispatchToProps = function( dispatch ) {
-    return {
-        addTodoFunction: ( text ) => {
-            dispatch( todoActions.addTodo( text ) )
-        },
-        searchTodo: (searchText) =>{
-            dispatch(todoActions.searchTodo(searchText))
-        }
-    }
-}
 
+    return {
+        ...bindActionCreators( { addTodoFunction, searchTodo }, dispatch )
+    };
+}
 
 export const AddTodo = connect( null, mapDispatchToProps )( AddTodoPanel );
