@@ -132,3 +132,9 @@ li.placeholderContent {
     background-color:yellow;
     border:1px dashed red;
 }
+
+div.loader {
+    background: white url(../images/ajax-loader.gif) center center no-repeat;
+    height: 190px;
+    background-size: 200px;
+}

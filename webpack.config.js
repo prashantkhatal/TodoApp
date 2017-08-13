@@ -2,6 +2,7 @@ var path = require('path'); //path of node js installation
 
 var DIST_DIR = path.resolve(__dirname, "dist");
 var SRC_DIR = path.resolve(__dirname, "src");
+var customPort;	//not defined will take 8080 automatically
 
 var config = {
     entry: SRC_DIR +  "/app/index.js",
@@ -23,6 +24,8 @@ var config = {
         ]
     },
     devServer: {
+		host:"127.0.0.1",
+		port: customPort,
         historyApiFallback:true
     }
 }

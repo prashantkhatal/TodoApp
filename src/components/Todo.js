@@ -8,10 +8,19 @@ export class TodoList extends React.Component{
 
     constructor(props){
         super(props);
+        this.state = { showLoader: true };
     }
 
     componentDidMount(){
         this.props.fetchContent(this.props.apiUrl);
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if( prevState.showLoader ) {
+            this.setState( {
+                showLoader: false
+            } );
+        }
     }
 
     render() {
@@ -45,7 +54,7 @@ export class TodoList extends React.Component{
 
                 <div className="clearfix"></div>
 
-                <ul><DragSortableList items={list} placeholder={placeholder}/></ul>
+                {(this.state.showLoader) ? <div className="loader"></div>: <ul><DragSortableList items={list} placeholder={placeholder}/></ul>}
             </div>
         )
     }
