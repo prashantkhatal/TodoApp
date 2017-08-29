@@ -138,3 +138,32 @@ div.loader {
     height: 190px;
     background-size: 200px;
 }
+
+.square {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 34px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 34px;
+}
+.block {
+    clear: both;
+}
+
+.winnerBoard {
+    margin-left: 120px;
+    margin-top: -70px;
+}
+
+.steps li {
+    text-decoration: underline;
+    cursor: pointer;
+    width: 55px;
+}
