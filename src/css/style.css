@@ -167,3 +167,49 @@ div.loader {
     cursor: pointer;
     width: 55px;
 }
+
+.example-appear {
+    opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+    opacity: 1;
+    transition: opacity 2500ms ease-in;
+}
+
+.example-enter {
+    opacity: 1;
+}
+
+.example-enter.example-enter-active {
+    opacity: 0.01;
+    transition: opacity 2500ms ease-in;
+}
+
+div.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+div.modal-content {
+    background-color: #fefefe;
+    margin: 90px 175px;
+    padding: 50px;
+    border: 1px solid #888;
+    width: 65%;
+}
+
+div.modal-close {
+    float: right;
+    margin: -45px -45px 0 0;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 28px;
+    font-weight: bold;
+}

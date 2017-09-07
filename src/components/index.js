@@ -13,7 +13,7 @@ export function TodosApp( props ) {
             <TodoListContainer apiUrl={Config.apiUrl} params={props.params}/>
             <VisibilityContainer/>
             <hr/>
-            <OtherComponent />
+            {/*<OtherComponent />*/}
         </div>
     );
 }

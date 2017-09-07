@@ -80,6 +80,8 @@ export class Game extends React.Component {
     }
 }
 
+//Avoid this as its problematic when reusing same component somewhere else
+// @Todo Get the rid of it
 Game.defaultProps = {
     squares: Array(9).fill(null),
     isXTurn: true,

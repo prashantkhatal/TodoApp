@@ -2,13 +2,19 @@ import React from 'react';
 import DragSortableList from 'react-drag-sortable';
 import PropTypes from 'prop-types';
 
+import {OtherComponent} from './OtherComponents';
+import {Modal} from './Modal';
+
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactTransitionGroup from 'react-addons-transition-group';
+import {SingleTransitionElement} from './SingleTransitionElement';
 
 export class TodoList extends React.Component{
 
 
     constructor(props){
         super(props);
-        this.state = { showLoader: true };
+        this.state = { showLoader: true, showModal: false };
     }
 
     componentDidMount(){
@@ -21,6 +27,10 @@ export class TodoList extends React.Component{
                 showLoader: false
             } );
         }
+    }
+
+    toggleModal = () => {
+        this.setState( prevProps => ({showModal: !prevProps.showModal}))
     }
 
     render() {
@@ -37,25 +47,37 @@ export class TodoList extends React.Component{
         }
 
         return (
-            <div className="todo-list">
-                <a href="#" className={`delete delete-all button ${( (!this.props.todos.length) ? 'hide' : '')}`}
-                   onClick={( e ) => {
-                       let ids = [];
-                       document.querySelectorAll( 'input[type=checkbox]:checked' ).forEach( function( e, d ) {
-                           ids.push( +e.getAttribute( 'data-id' ) )
-                       } );
-                       ids.length && this.props.deleteTodos( ids );
-                   }}>Delete All</a>
+                <div>
+                    <a href="#" className="delete button" onClick={( e ) => {
+                        this.toggleModal();
+                    }}>Play Game</a>
 
-                <span>Todo List:</span>
-                <a href="#" className="delete delete-all fetch hide button" onClick={( e ) => {
-                    this.props.fetchContent();
-                }}>Fetch Content</a>
+                    <ReactTransitionGroup component={SingleTransitionElement}>
+                        {this.state.showModal && <Modal onCancel={this.toggleModal} >
+                            <OtherComponent />
+                        </Modal>}
+                    </ReactTransitionGroup>
 
-                <div className="clearfix"></div>
+                    <div className="todo-list">
+                        <a href="#" className={`delete delete-all button ${( (!this.props.todos.length) ? 'hide' : '')}`}
+                           onClick={( e ) => {
+                               let ids = [];
+                               document.querySelectorAll( 'input[type=checkbox]:checked' ).forEach( function( e, d ) {
+                                   ids.push( +e.getAttribute( 'data-id' ) )
+                               } );
+                               ids.length && this.props.deleteTodos( ids );
+                           }}>Delete All</a>
 
-                {(this.state.showLoader) ? <div className="loader"></div>: <ul><DragSortableList items={list} placeholder={placeholder}/></ul>}
-            </div>
+                        <span>Todo List:</span>
+                        <a href="#" className="delete delete-all fetch hide button" onClick={( e ) => {
+                            this.props.fetchContent();
+                        }}>Fetch Content</a>
+
+                        <div className="clearfix"></div>
+
+                        {(this.state.showLoader) ? <div className="loader"></div>: <ul><DragSortableList items={list} placeholder={placeholder}/></ul>}
+                    </div>
+                </div>
         )
     }
 }
@@ -72,6 +94,35 @@ function Todo( props ) {
             }}>Delete</a>
         </li>
     );
+}
+
+const Animator = (props) =>{
+    if(props.isCssTransition) {
+        return <ReactCSSTransitionGroup
+                    transitionName="example"
+                    transitionAppear={true}
+                    transitionAppearTimeout={5500}
+                    transitionEnter={true}
+                    transitionLeave={true}
+                    transitionEnterTimeout={5500}
+                    transitionLeaveTimeout={5500}
+                    >
+                    {props.children}
+                </ReactCSSTransitionGroup>
+    }else{
+        return <ReactTransitionGroup component={GetChild}>
+            {props.children}
+        </ReactTransitionGroup>
+    }
+}
+
+// to return child
+// Why implemented this?
+// Because the ReactTransitionGroup will wrap all into span(by default ) or component="ul or react Component"
+// so to avoid it and make children as first child, it's used
+const GetChild = (props) => {
+    const childrenArray = React.Children.toArray(props.children);
+    return childrenArray[0] || '';
 }
 
 TodoList.propTypes = {
