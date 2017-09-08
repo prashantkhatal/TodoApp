@@ -5,7 +5,16 @@ export class Game extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = props;
+        this.state = {
+            squares: Array(9).fill(null),
+            isXTurn: true,
+            winner: '',
+            history: []
+        };
+    }
+
+    componentWillMount(){
+        console.log('resetGameing ');
     }
 
     resetGame = () => {

@@ -52,11 +52,9 @@ export class TodoList extends React.Component{
                         this.toggleModal();
                     }}>Play Game</a>
 
-                    <ReactTransitionGroup component={SingleTransitionElement}>
-                        {this.state.showModal && <Modal onCancel={this.toggleModal} >
-                            <OtherComponent />
-                        </Modal>}
-                    </ReactTransitionGroup>
+                    <Modal onCancel={this.toggleModal} show={this.state.showModal}>
+                        <OtherComponent />
+                    </Modal>
 
                     <div className="todo-list">
                         <a href="#" className={`delete delete-all button ${( (!this.props.todos.length) ? 'hide' : '')}`}

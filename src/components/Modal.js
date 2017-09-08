@@ -1,6 +1,8 @@
 import React from 'react';
+import {SingleTransitionElement} from './SingleTransitionElement';
 
-export class Modal extends React.Component {
+
+class ModalBox extends React.Component {
 
     componentWillEnter(callback){
         window.addEventListener('keyup', this.handleEscape);
@@ -29,3 +31,9 @@ export class Modal extends React.Component {
         );
     }
 }
+
+export const Modal = (props) => (
+    <SingleTransitionElement>
+        {props.show && <ModalBox {...props}>{props.children} </ModalBox>}
+    </SingleTransitionElement>
+)
