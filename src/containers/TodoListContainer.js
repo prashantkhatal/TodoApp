@@ -22,7 +22,8 @@ function listOutTodos( todos, status, searchText = '' ) {
 
 const mapStatesToMap = function( state, myOwnProps ) {
     return {
-        todos: listOutTodos( state.todos, myOwnProps.params.filter || state.visibility, state.searchText )
+        todos: listOutTodos( state.todos, myOwnProps.params.filter || state.visibility, state.searchText ),
+        isLoggedIn: state.user.isLoggedIn
     }
 }
 

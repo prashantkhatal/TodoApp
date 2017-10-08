@@ -8,25 +8,14 @@ import {Modal} from './Modal';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ReactTransitionGroup from 'react-addons-transition-group';
 import {SingleTransitionElement} from './SingleTransitionElement';
+import {Link} from 'react-router';
 
 export class TodoList extends React.Component{
 
 
     constructor(props){
         super(props);
-        this.state = { showLoader: true, showModal: false };
-    }
-
-    componentDidMount(){
-        this.props.fetchContent(this.props.apiUrl);
-    }
-
-    componentDidUpdate(prevProps, prevState){
-        if( prevState.showLoader ) {
-            this.setState( {
-                showLoader: false
-            } );
-        }
+        this.state = { showModal: false };
     }
 
     toggleModal = () => {
@@ -48,9 +37,18 @@ export class TodoList extends React.Component{
 
         return (
                 <div>
+                    <br/>
                     <a href="#" className="delete button" onClick={( e ) => {
                         this.toggleModal();
                     }}>Play Game</a>
+
+                    <Link to="/games" className="delete button">Goto Games Page</Link>
+
+                    <Link to="/#" className="delete button" onClick={(e) => {
+                        this.props.loginUser();
+                    }}> {(this.props.isLoggedIn) ? 'Log Out' : 'Log In'} </Link>
+
+                    <span >{(this.props.isLoggedIn) ? 'Yes User Logged In!!' : 'Please Login'}</span><br/>
 
                     <Modal onCancel={this.toggleModal} show={this.state.showModal}>
                         <OtherComponent />

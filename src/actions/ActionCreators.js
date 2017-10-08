@@ -6,7 +6,7 @@ export const toggleTodo = ( id ) => ({ type: actionConstants.TOGGLE_TODO, id });
 export const deleteTodos = ( ids ) => ({ type: actionConstants.DELETE_TODOS, ids });
 export const searchTodo = ( searchText ) => ({ type: actionConstants.SEARCH_TODO, searchText });
 export const switchVisibility = ( visibility ) => ({ type: actionConstants.SET_VISIBILITY_FILTER, visibility });
-
+export const loginUser = () => ({ type: actionConstants.LOGIN_USER});
 
 export const fetchContent = ( url ) => (function( dispatch ) {
 
@@ -25,5 +25,6 @@ export const todoActions = {
     toggleTodo,
     deleteTodos,
     searchTodo,
-    fetchContent
+    fetchContent,
+    loginUser
 }
